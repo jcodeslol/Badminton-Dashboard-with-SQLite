@@ -10,17 +10,13 @@ env/
 # Streamlit secrets
 .streamlit/secrets.toml
 
-# Generated data
-data/*.csv
-data/*.json
-
-# Generated videos
-video/*.mp4
-video/*.avi
-video/*.mov
-
 # Logs
 *.log
 
 # Windows
 Thumbs.db
+
+# Videos (too large for GitHub)
+video/*.mp4
+video/*.avi
+video/*.mov
