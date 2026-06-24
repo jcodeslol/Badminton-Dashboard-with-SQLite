@@ -7,7 +7,7 @@ from utils.db import save_session
 
 
 @st.cache_resource
-def getha _model_and_encoder():
+def get_model_and_encoder():
     return load_model_and_encoder()
 
 
