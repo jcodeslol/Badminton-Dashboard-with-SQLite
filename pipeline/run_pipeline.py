@@ -277,7 +277,14 @@ def _compute_analytics(landmarks_df, features_df, predictions_df, fps, detected_
 def run_full_pipeline(video_path, model, encoder, progress_callback=None):
     # Import mediapipe HERE (lazy) so module-level import never runs on Streamlit Cloud
     import mediapipe as mp
-    mp_pose = mp.solutions.pose
+
+    import mediapipe as mp
+
+print("DEBUG MEDIAPIPE:", mp)
+print("DEBUG FILE:", getattr(mp, "__file__", "NO_FILE"))
+print("DEBUG HAS_SOLUTIONS:", hasattr(mp, "solutions"))
+
+mp_pose = mp.solutions.pose
 
     LANDMARK_INDEX = {
         "nose":           mp_pose.PoseLandmark.NOSE.value,
