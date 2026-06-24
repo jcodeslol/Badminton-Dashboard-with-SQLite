@@ -18,12 +18,16 @@ def section_video():
 
     landmarks   = get_active_landmarks()
     predictions = get_active_predictions()
-    # THE FIX: was hardcoded to "video/annotated_video.mp4" — after an
-    # upload, this would draw the UPLOADED video's skeleton coordinates
-    # onto the OLD DEMO video's frames. Now resolves to whichever video
-    # is actually active.
     video_path = get_active_video_path()
 
+    if predictions is None:
+        st.warning("No predictions available yet. Upload and process a video first.")
+        return
+
+    if landmarks is None:
+        st.warning("No landmarks available yet. Upload and process a video first.")
+        return
+    
     col1, col2 = st.columns([1.3, 1])
 
     with col1:
