@@ -50,20 +50,11 @@ def get_active_features():
         return upload
     return st.session_state.get("demo_features")
 
-
 def get_active_video_path() -> str:
-    """
-    Returns the annotated video path for whichever dataset is active.
-    THE FIX: previously video_section.py hardcoded the demo video path,
-    so after an upload, the Frame Inspector kept drawing the UPLOADED
-    video's skeleton coordinates onto the OLD DEMO video's frames —
-    same root symptom as the squished-skeleton bug, just reintroduced
-    through video_path instead of landmarks/predictions.
-    """
     result = st.session_state.get("upload_result")
     if result is not None:
         return result.get("annotated_video_path", "video/test_annotated_video.mp4")
-    return "video/annotated_video.mp4"
+    return "video/test_annotated_video.mp4"
 
 
 def is_upload_active() -> bool:
