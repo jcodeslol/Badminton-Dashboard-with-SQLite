@@ -30,7 +30,7 @@ from utils.tactical_section import build_tactical_data
 # ---------------------------------------------------------------------------
 OLLAMA_URL   = "http://localhost:11434/api/generate"
 OLLAMA_MODEL = "llama3"   # change to whatever model you have pulled
-GEMINI_MODEL = "gemini-1.5-flash"  # free tier, fast
+GEMINI_MODEL = "gemini-2.0-flash"  # free tier, fast
 
 
 # ---------------------------------------------------------------------------
