@@ -1,6 +1,6 @@
 streamlit==1.32.0
 streamlit-option-menu==0.3.12
-opencv-python-headless
+opencv-python-headless==4.9.0.80
 numpy
 pandas==2.2.1
 plotly==5.19.0
