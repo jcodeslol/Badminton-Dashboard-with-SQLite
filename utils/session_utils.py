@@ -62,7 +62,7 @@ def get_active_video_path() -> str:
     """
     result = st.session_state.get("upload_result")
     if result is not None:
-        return result.get("annotated_video_path", "video/annotated_video.mp4")
+        return result.get("annotated_video_path", "video/test_annotated_video.mp4")
     return "video/annotated_video.mp4"
 
 
