@@ -2,6 +2,7 @@ import streamlit as st
 import os
 import cv2
 import numpy as np
+import pandas as pd
 from utils.session_utils import get_active_landmarks, get_active_predictions, get_active_video_path
 
 
@@ -114,13 +115,27 @@ def _get_raw_frame(video_path, frame_idx):
 
 def _draw_skeleton(img, row):
     h, w = img.shape[:2]
+
     x_cols = [c for c in row.index if c.endswith("_x")]
+
     for x_col in x_cols:
         y_col = x_col[:-2] + "_y"
-        if y_col in row.index:
-            x_px = int(row[x_col] * w)
-            y_px = int(row[y_col] * h)
-            cv2.circle(img, (x_px, y_px), 4, (0, 200, 255), -1)
+
+        if y_col not in row.index:
+            continue
+
+        # Skip missing or invalid landmark values
+        if pd.isna(row[x_col]) or pd.isna(row[y_col]):
+            continue
+
+        try:
+            x_px = int(float(row[x_col]) * w)
+            y_px = int(float(row[y_col]) * h)
+        except (ValueError, TypeError):
+            continue
+
+        cv2.circle(img, (x_px, y_px), 4, (0, 200, 255), -1)
+
     return img
 
 
