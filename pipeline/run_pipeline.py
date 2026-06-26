@@ -7,6 +7,15 @@ import joblib
 import subprocess
 import imageio_ffmpeg
 
+# REMOVE this:
+import cv2
+
+# REPLACE with:
+try:
+    import cv2
+except ImportError:
+    from mediapipe.python import cv2
+    
 # NOTE: mediapipe is imported LAZILY inside run_full_pipeline() only,
 # NOT at module level. This prevents the "module has no attribute solutions"
 # crash on Streamlit Cloud where mediapipe loads differently.
