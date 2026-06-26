@@ -14,10 +14,6 @@ env/
 data/*.csv
 data/*.json
 
-# Generated videos
-video/*.mp4
-video/*.avi
-video/*.mov
 
 # Logs
 *.log
