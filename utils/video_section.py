@@ -137,25 +137,30 @@ def _draw_skeleton(img, row):
         cv2.circle(img, (x_px, y_px), 4, (0, 200, 255), -1)
 
     return img
-
-
 def _draw_bounding_box(img, row):
     h, w = img.shape[:2]
-    x_cols = [c for c in row.index if c.endswith("_x")]
-    y_cols = [c for c in row.index if c.endswith("_y")]
 
-    if not x_cols or not y_cols:
+    x_vals = []
+    y_vals = []
+
+    for col in row.index:
+        if col.endswith("_x") and not pd.isna(row[col]):
+            x_vals.append(float(row[col]) * w)
+        elif col.endswith("_y") and not pd.isna(row[col]):
+            y_vals.append(float(row[col]) * h)
+
+    if not x_vals or not y_vals:
         return img
 
-    x_min = row[x_cols].min() * w
-    x_max = row[x_cols].max() * w
-    y_min = row[y_cols].min() * h
-    y_max = row[y_cols].max() * h
+    x_min, x_max = min(x_vals), max(x_vals)
+    y_min, y_max = min(y_vals), max(y_vals)
 
     cv2.rectangle(
         img,
         (int(x_min), int(y_min)),
         (int(x_max), int(y_max)),
-        (0, 0, 255), 2
+        (0, 255, 0),
+        2,
     )
+
     return img
