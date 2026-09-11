@@ -8,5 +8,5 @@ scikit-learn
 joblib
 imageio
 imageio-ffmpeg
-protobuf==3.20.3
 mediapipe==0.10.14
+protobuf==3.20.3
