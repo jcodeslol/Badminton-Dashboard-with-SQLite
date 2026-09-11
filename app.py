@@ -15,14 +15,16 @@ ARCHITECTURE:
     session lookup) — handled below via get_active_features().
 """
 
-import os
+
 import json
 import pandas as pd
 import streamlit as st
 from streamlit_option_menu import option_menu
 from utils.history_section import render_history_section
 from utils.db import init_db
-
+import os
+os.environ['PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION'] = 'python'
+import streamlit as st
 from styling import apply_custom_theme
 
 from utils.session_utils import get_active_features, is_upload_active, clear_upload_data
